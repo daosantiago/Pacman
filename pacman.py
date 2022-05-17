@@ -233,6 +233,7 @@ class Cenario(ElementoJogo):
                 else:
                     self.pac.linha = 1
                     self.pac.coluna = 1
+                    self.pac.direcao = DIREITA
             else:
                 if 0 <= col_intencao < 28 and 0 <= lin_intencao < 29 and self.matrix[lin_intencao][col_intencao] != 2:
                     mov.aceitar_movimento()
@@ -321,9 +322,9 @@ class Pacman(Movivel, ElementoJogo):
     def pintar(self, tela):
         self.abertura += self.velocidade_abertura
         if self.abertura >= self.raio:
-            self.velocidade_abertura = -10
+            self.velocidade_abertura = -5
         if self.abertura <= 0:
-            self.velocidade_abertura = 10
+            self.velocidade_abertura = 5
 
         # Desenhar o corpo do pacman
         pg.draw.circle(tela, AMARELO, (self.centro_x,
@@ -360,8 +361,8 @@ class Pacman(Movivel, ElementoJogo):
 
 class Fantasma(ElementoJogo):
     def __init__(self, cor, tamanho):
-        self.coluna = 6
-        self.linha = 2
+        self.coluna = 20
+        self.linha = 17
         self.tamanho = tamanho
         self.cor = cor
         self.velocidade = 0.5
